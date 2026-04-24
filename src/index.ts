@@ -9,7 +9,8 @@ app.get("/health", (_req, res) => {
 });
 
 app.get("/scan", async (_req, res) => {
-  const result = await runScanner();
+  const text = typeof _req.query.text === "string" ? _req.query.text : "";
+  const result = await runScanner(text);
   res.json(result);
 });
 
